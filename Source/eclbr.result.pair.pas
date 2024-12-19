@@ -567,6 +567,8 @@ begin
   LTypeInfo := TypeInfo(S);
   if LTypeInfo.Kind = tkClass then
   begin
+    if not FSuccess.HasValue then
+      Exit;
     LObject := TValue.From<S>(FSuccess.GetValue);
     LObject.AsObject.Free;
   end;
@@ -605,6 +607,8 @@ begin
   LTypeInfo := TypeInfo(F);
   if LTypeInfo.Kind = tkClass then
   begin
+    if not FFailure.HasValue then
+      Exit;
     LObject := TValue.From<F>(FFailure.GetValue);
     LObject.AsObject.Free;
   end;
